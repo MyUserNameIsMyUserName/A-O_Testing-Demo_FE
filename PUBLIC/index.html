@@ -29,13 +29,10 @@
     
     .course {
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+        z-index: 20;
+        box-shadow: 0 10px 10px rgb(0 0 0 / 20%);
         display: flex;
         max-width: 100%;
-        margin: 20px;
-        overflow: hidden;
-        width: 700px;
     }
     
     .course h6 {
@@ -55,6 +52,7 @@
         color: #fff;
         padding: 30px;
         max-width: 250px;
+        width: 100%;
     }
     
     .course-preview a {
@@ -267,7 +265,36 @@
         color: #FF7500;
         text-decoration: none;
     }
-    
+    .courses-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        margin: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+        width: 700px;
+        box-shadow: 0 5px 10px rgb(0 0 0 / 22%);
+    }
+
+    .dev-notes {
+        background: white;
+        padding: 1em;
+        border-bottom: 5px solid #2a265f;
+        overflow: hidden;
+        padding: 0 1em;
+        font-size: 0;
+        transition: 0.5s cubic-bezier(0.43, -0.5, 0.57, 1.53) all;
+    }
+    .dev-notes-show .dev-notes {
+        padding: 1em;
+        font-size: 1em;
+    }
+
+    .dev-notes p {
+        line-height: 1.35em;
+        letter-spacing: -1px;
+    }
+
     @media screen and (max-width: 480px) {
     
         .social-panel-container.visible {
@@ -280,12 +307,67 @@
     }
     </style>
     <h1>List of Demo/Tests:</h1>
-    <div class="courses-container">
+    <div id='html-form-inputs' class="courses-container">
+        <div class="course">
+            <div class="course-preview">
+                <h6>Project</h6>
+                <h2>Advanced HTML Form Inputs</h2>
+                <a href="#" onclick="document.getElementById('html-form-inputs').classList.toggle('dev-notes-show')">View Dev Notes <i class="icon">>></i></a>
+            </div>
+            <div class="course-info">
+                <!--div class="progress-container">
+                    <div class="progress"></div>
+                    <span class="progress-text">
+                        6/9 Challenges
+                    </span>
+                </div-->
+                <h6>Test Name:</h6>
+                <h2>Inputs v.1</h2>
+                <a class="btn" href="/testing/inputs_v1/index.html">View Test</a>
+            </div>
+        </div>
+        <div class="dev-notes">
+            <h4>Shitstorm Title</h4>
+            <p>
+                Some random text to show up there just to try and fill in some space,sdaio  pmaispa psi pna. id in! pnsd pISA ?
+                Some random text to show up pace,sdaio  pmaispa psi pna. id in! pnsd pISA ?
+                Some random text to show up there just to try and fill in some space,
+                sdaio  pmaispa psi pna. id in! pnsd pISA ?
+            </p>
+        </div>
+    </div>
+    <div id='webWorkerSimple' class="courses-container">
         <div class="course">
             <div class="course-preview">
                 <h6>Project</h6>
                 <h2>JavaScript Code Snippets</h2>
-                <a href="#">View Dev Notes <i class="icon">>></i></a>
+                <a href="#" onclick="document.getElementById('webWorkerSimple').classList.toggle('dev-notes-show')">View Dev Notes <i class="icon">>></i></a>
+            </div>
+            <div class="course-info">
+                <!--div class="progress-container">
+                    <div class="progress"></div>
+                    <span class="progress-text">
+                        6/9 Challenges
+                    </span>
+                </div-->
+                <h6>Test Name:</h6>
+                <h2>Simple Web Worker Example</h2>
+                <a class="btn" href="/testing/webWorkerSimple/index.html">View Test</a>
+            </div>
+        </div>
+        <div class="dev-notes">
+            <h4>CopyOver as a sample</h4>
+            <p>
+                Check <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">mozzila/web_workers_api</a> for more information on how to use it.
+            </p>
+        </div>
+    </div>
+    <div id='webWorkerDemo1' class="courses-container">
+        <div class="course">
+            <div class="course-preview">
+                <h6>Project</h6>
+                <h2>JavaScript Code Snippets</h2>
+                <a href="#" onclick="document.getElementById('webWorkerDemo1').classList.toggle('dev-notes-show')">View Dev Notes <i class="icon">>></i></a>
             </div>
             <div class="course-info">
                 <!--div class="progress-container">
@@ -296,8 +378,17 @@
                 </div-->
                 <h6>Test Name:</h6>
                 <h2>WebWorkers Demo_1</h2>
-                <a class="btn" href="/webWorkerDemo1/index.html">View Test</a>
+                <a class="btn" href="/testing/webWorkerDemo1/index.html">View Test</a>
             </div>
+        </div>
+        <div class="dev-notes">
+            <h4>Shitstorm Title</h4>
+            <p>
+                Some random text to show up there just to try and fill in some space,sdaio  pmaispa psi pna. id in! pnsd pISA ?
+                Some random text to show up pace,sdaio  pmaispa psi pna. id in! pnsd pISA ?
+                Some random text to show up there just to try and fill in some space,
+                sdaio  pmaispa psi pna. id in! pnsd pISA ?
+            </p>
         </div>
     </div>
     <div class="courses-container">

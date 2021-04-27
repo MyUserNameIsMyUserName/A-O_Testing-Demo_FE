@@ -1,0 +1,53 @@
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    background: #333;
+    color: #Cacaca;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+input_group {
+    padding: 1em;
+}
+
+worker_msg_list {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+}
+
+worker_msg {
+    border: 1px solid gray;
+    padding: 0.25em 0.75em;
+}
+</style>
+
+<script>
+    var myWorker = new Worker('/testing/webWorkerSimple/my_task.js');
+
+    myWorker.onmessage = function(oEvent) {
+        console.log('Worker said : ' + oEvent.data);
+        document.querySelector('worker_msg_list').innerHTML += "<worker_msg><p>Worker said : "+ oEvent.data + "<p><p>"+Date.now()+"</p></worker_msg>";
+    };
+
+    myWorker.postMessage('ali');
+
+    function sendInputToWorker() {
+        myWorker.postMessage(document.getElementById('msgForWorker').value);
+    }
+</script>
+
+<input_group>
+    <input type="text" name="msgForWorker" id="msgForWorker">
+    <button onclick="sendInputToWorker()">SendMsgToWorker</button>
+</input_group>
+
+<worker_msg_list>
+
+</worker_msg_list>
