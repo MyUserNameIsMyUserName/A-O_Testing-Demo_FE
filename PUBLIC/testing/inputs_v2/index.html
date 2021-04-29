@@ -1,0 +1,89 @@
+<style>
+   input_group {
+    display: flex!important;
+    flex-direction: column!important;
+    gap: 1em;
+    /* padding: 1em; */
+    background: rgb(0 0 0 / 25%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    background: #333;
+    color: #E0e0e0;
+    text-shadow: 0 0 5px black;
+    padding: 1em;
+    margin: 1em;
+    gap: 1em;
+    border-radius: 5em;
+}
+
+title {
+    display: flex;
+    flex-direction: revert;
+    flex: 1;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    background: rgb(0 0 0 / 15%);
+}
+
+title {}
+
+input_single {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    /* background: rgb(0 0 0 / 25%); */
+    gap: 1em;
+    padding: 1em;
+}
+
+group , number_input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1em;
+    background: rgb(0 0 0 / 25%);
+}
+
+h1 {
+    margin: 0;
+    margin: .5em;
+    padding: 0.5em .75em;
+    background: #707070;
+}
+
+* {
+    border-radius: 1em;
+    /* border: .25px solid #999999; */
+}
+</style>
+<script>
+    var someDemoVal = 55 ; 
+</script>
+
+<h1>Better Demo Inputs v2</h1>
+<var_view></var_view>
+<input_group>
+    <title>Random Value</title>
+    <input_single>
+        <number_imput id="workerNumber" min="1" max="200" step="1" default="25">
+            <pre id="workerNumber_Text" contenteditable="true" oninput="console.log(this.innerText); this.innerText = this.innerText.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1'); console.log(this.innerText); document.getElementById('workerNumber_Range').value = this.innerText; if (parseInt(this.innerText) > parseInt(document.getElementById('workerNumber').getAttribute('max'))) { this.innerText = document.getElementById('workerNumber').getAttribute('max') } ;" ></pre>
+            <input type="range" name="workerNumber_Range" id="workerNumber_Range" min="1" max="200" step="1" oninput="document.getElementById('workerNumber_Text').innerText = this.value ; console.log(this.value);" onload="console.log(this.value);">
+        </number_imput>
+        <button class="reset_input" onclick="document.getElementById('workerNumber_Range').value = 25 ; document.getElementById('workerNumber_Text').value = 25;">Reset</button>
+    </input_single>
+</input_group>
+<input_group>
+    <title>Other Demo Testing Value</title>
+    <input_single>
+        <group>
+            <input type="number" name="workerLoadText" id="workerLoadText" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadRange').value = this.value ; console.log(this.value);"  value="250" onload="console.log(this.value);">
+            <input type="range" name="workerLoadRange" id="workerLoadRange" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadText').value = this.value ; console.log(this.value);"  value="250" onload="console.log(this.value);" >
+        </group>
+        <button class="reset_input" onclick="document.getElementById('workerLoadRange').value = 250 ; document.getElementById('workerLoadText').value = 250 ;">Reset</button>
+    </input_single>
+</input_group>

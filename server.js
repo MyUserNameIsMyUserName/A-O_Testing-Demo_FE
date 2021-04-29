@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const PORT = 8080;
+const PORT = 5252;
 
 const STATIC = path.resolve(__dirname, "PUBLIC");
 const INDEX = path.resolve(STATIC, "index.html");
