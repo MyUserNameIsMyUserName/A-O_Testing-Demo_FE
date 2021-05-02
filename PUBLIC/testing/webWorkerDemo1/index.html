@@ -60,6 +60,27 @@ h1 {
     border-radius: 1em;
     /* border: .25px solid #999999; */
 }
+
+
+
+worker_list {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap : .75em;
+}
+
+worker_list worker {
+  border: 1px solid #b77600;
+  padding: 10px;
+  line-height: 1.25em;
+  border-radius: 0;
+}
+
+worker p {
+  margin: 0;
+  padding: 0;
+}
+
 </style>
 
 <h1>WebWorker_DEMO_1</h1>
@@ -67,8 +88,8 @@ h1 {
     <title>Number of workers</title>
     <input_single>
         <group>
-            <input type="number" name="workerNumberText" id="workerNumberText" min="1" max="200" step="1" oninput="document.getElementById('workerNumberRange').value = this.value ; console.log(this.value);"  value="25">
-            <input type="range" name="workerNumberRange" id="workerNumberRange" min="1" max="200" step="1" oninput="document.getElementById('workerNumberText').value = this.value ; console.log(this.value);"  value="25" onload="this.value = document.getElementById('workerNumberText').value;" >
+            <input type="number" name="workerNumberText" id="workerNumberText" min="1" max="200" step="1" oninput="document.getElementById('workerNumberRange').value = this.value ; console.log(this.value);startWorkers();"  value="25">
+            <input type="range" name="workerNumberRange" id="workerNumberRange" min="1" max="200" step="1" oninput="document.getElementById('workerNumberText').value = this.value ; console.log(this.value);startWorkers();"  value="25" onload="this.value = document.getElementById('workerNumberText').value;" >
         </group>
         <button class="reset_input" onclick="document.getElementById('workerNumberRange').value = 25 ; document.getElementById('workerNumberText').value = 25;">Reset</button>
     </input_single>
@@ -77,9 +98,74 @@ h1 {
     <title>Single worker work load per second</title>
     <input_single>
         <group>
-            <input type="number" name="workerLoadText" id="workerLoadText" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadRange').value = this.value ; console.log(this.value);"  value="250">
-            <input type="range" name="workerLoadRange" id="workerLoadRange" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadText').value = this.value ; console.log(this.value);"  value="250" onload="this.value = document.getElementById('workerNumberText').value;" >
+            <input type="number" name="workerLoadText" id="workerLoadText" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadRange').value = this.value ; console.log(this.value); "  value="250">
+            <input type="range" name="workerLoadRange" id="workerLoadRange" min="1" max="1000" step="1" oninput="document.getElementById('workerLoadText').value = this.value ; console.log(this.value); "  value="250">
         </group>
         <button class="reset_input" onclick="document.getElementById('workerLoadRange').value = 250 ; document.getElementById('workerLoadText').value = 250 ;">Reset</button>
     </input_single>
 </input_group>
+
+<input_group>
+    <button onclick="startWork()">Start</button>
+</input_group>
+
+<worker_list>
+
+</worker_list>
+
+
+<script>
+    var myWorkerGroup = [];
+
+    //var myWorker = new Worker('/testing/webWorkerDemo1/wworker.js');
+
+    //myWorker.onmessage = function(e) {
+    //    console.log('Worker said : ' + e.data);
+    //    document.querySelector('worker_msg_list').innerHTML += "<worker_msg><p>Worker said : "+ e.data + "<p><p>"+Date.now()+"</p></worker_msg>";
+    //};
+
+    function startWork() {
+        var load = document.getElementById('workerLoadText').value;
+        myWorkerGroup.forEach(element => {
+            element.ww.postMessage(load);
+        });
+    }
+
+    window.onload = function(){
+        startWorkers();
+    }
+
+    function startWorkers(){
+        var numberOfWorkers = document.getElementById('workerNumberRange').value;
+
+        for (let i = 0; i < numberOfWorkers; i++) {
+            myWorkerGroup.push({ id : 'WW_'+i, ww : new Worker('/testing/webWorkerDemo1/wworker.js'), wdone : 0 } );
+        }
+
+        myWorkerGroup.forEach(element => {
+            element.ww.onmessage = function(e) {
+                //console.log('Worker said : ' + e.data);
+                if (e.data === "DID!"){
+                    element.wdone++;
+                }else if (e.data === "READY!"){
+                    element.status = "Ready!";
+                }else {
+                    element.wdone = e.data;
+                }
+            };
+        });
+    }
+
+    function drawWorkGroupStatus(){
+        document.querySelector('worker_list').innerHTML = "";
+        myWorkerGroup.forEach(element => {
+            document.querySelector('worker_list').innerHTML += "<worker><p>ID: "+ element.id +"</p><p>Status: "+ element.status + "</p><p>WorkDone: "+ element.wdone + "</p></worker>";
+            element.wdone = 0;
+        });
+    };
+    
+
+    setInterval(() => {
+        drawWorkGroupStatus();
+    }, 1000);
+</script>
