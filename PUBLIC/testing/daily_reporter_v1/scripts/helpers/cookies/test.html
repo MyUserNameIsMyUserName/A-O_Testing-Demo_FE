@@ -1,0 +1,26 @@
+<style>
+    * {
+        margin: 1em;
+        border: 1px solid rgb(73, 73, 73);
+        padding: 1em;
+    }
+    html, body {
+        font-size: 100%;
+        font-family: monospace;
+        background: #353545;
+        color: #e0e0e0;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+<script src="./coockies.func.js"></script>
+<script src="./test.js"></script>
+
+<set_cookie>
+    <input type="text" name="cname" id="cname_input" placeholder="Cookie Name">
+    <input type="text" name="cvalue" id="cvalue_input" placeholder="Extreeme Value">
+    <button onclick='setCookie(document.getElementById("cname_input").value, document.getElementById("cvalue_input").value, 30)'>Set Cookie</button>
+</set_cookie>
+<cookie_list>
+
+</cookie_list>
