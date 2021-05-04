@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background: #303030;
+    color: #c0c0c0;
+    font-family: monospace;
+    font-size: 100%;
+}
