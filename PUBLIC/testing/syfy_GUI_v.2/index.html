@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SVG SyFy GUI v.1</title>
+        <link rel="stylesheet" href="style/gui.css">
+    </head>
+    <body>
+
+        <div id="gui_app">
+            <svg width="1000" height="1000">
+                <polygon points="500,300 700,500 500,700 300,500" style="fill:lime;stroke:purple;stroke-width:1;"></polygon>
+                <polygon points="500,300 300,500 150,500 500,150" style="fill:lime;stroke:purple;stroke-width:1;transform: translate(-50px, -50px);"></polygon>
+                <polygon points="300,500 500,700 500,850 150,500" style="fill:lime;stroke:purple;stroke-width:1;transform: translate(-50px, 50px);"></polygon>
+                <polygon points="500,700 700,500 850,500 500,850" style="fill:lime;stroke:purple;stroke-width:1;transform: translate(50px, 50px);"></polygon>
+                <polygon points="500,300 700,500 850,500 500,150" style="fill:lime;stroke:purple;stroke-width:1;transform: translate(50px, -50px);"></polygon>
+            </svg>
+        </div>
+
+        <script src="scripts/gui_blueprint.js"></script>
+        <script src="scripts/gui.js"></script>
+    </body>
+</html>

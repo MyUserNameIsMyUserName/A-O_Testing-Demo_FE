@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background: #303030;
+    color: #c0c0c0;
+    font-family: monospace;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    perspective: 1000px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+#gui_app {
+  position: absolute;
+  border: 10px dashed transparent;
+  opacity: 0;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  animation: rootAnim;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes rootAnim {
+    0% {
+        opacity: 0;
+        border-color: orange;
+    }
+    5% {
+        opacity:1;
+        border-color: orange;
+    }
+    10% {
+        transform: rotateX(45deg);
+        border-color: darkorange;
+    }
+    15% {
+        transform: rotateX(45deg);
+        border-color: darkorange;
+    }
+    50% {
+        transform: rotateX(45deg) rotateZ(360deg);
+        border-color: red;
+    }
+    84.999% {
+        transform: rotateX(45deg) rotateZ(720deg);
+        border-color: orange;
+    }
+    85% {
+        transform: rotateX(45deg);
+        border-color: darkorange;
+    }
+    90% {
+        opacity:1;
+        transform: rotateX(0deg);
+        border-color: darkorange;
+        box-shadow : 0 0 30px darkorange;
+    }
+    100% {
+        border-color: gray;
+        border-color: orange;
+        box-shadow : 0 0 20px darkorange;
+    }
+}

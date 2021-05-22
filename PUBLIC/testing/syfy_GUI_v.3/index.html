@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>syfy_GUI_v.3</title>
+<style>
+
+body {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: #444;
+}
+
+#div1 {
+  position: relative;
+  height: 600px;
+  width: 600px;
+  margin: 50px;
+  padding: 10px;
+  border: 1px solid black;
+  perspective: 1200px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#div2 {
+    height: 500px;
+    width: 500px;
+    color: blue;
+    position: absolute;
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg) ;
+    border-radius: 50%;
+    border: 10px dashed blue;
+    animation-name: spin;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#div3 {
+    height: 400px;
+    width: 400px;
+    color: green;
+    position: absolute;
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg) translateZ(60px);
+    animation-name: spin2;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    border-radius: 50%;
+    border: 10px dashed green;
+    z-index: 20;
+}
+
+#div4 {
+    height: 600px;
+    width: 600px;
+    color: red;
+    position: absolute;
+    transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg) translateZ(-60px);
+    border-radius: 50%;
+    border: 10px dashed red;
+    animation-name: spin3;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: -20;
+}
+
+@keyframes spin {
+    0% {transform:rotateX(45deg) rotateY(45deg) rotateZ(45deg) ;}
+    50% {transform:rotateX(45deg) rotateY(45deg) rotateZ(405deg); width: 450px; height: 450px; border: 60px double rgb(111, 0, 255); box-shadow: 0 0 50px red;}
+    100% {transform:rotateX(45deg) rotateY(45deg) rotateZ(765deg);}
+}
+
+@keyframes spin2 {
+    0% {transform:rotateX(45deg) rotateY(45deg) rotateZ(45deg) translateZ(60px); }
+    50% {transform:rotateX(45deg) rotateY(45deg) rotateZ(405deg) translateZ(0px); width: 500px; height: 500px;}
+    100% {transform:rotateX(45deg) rotateY(45deg) rotateZ(765deg) translateZ(60px); }
+}
+
+@keyframes spin3 {
+    0% {transform:rotateX(45deg) rotateY(45deg) rotateZ(45deg) translateZ(-60px); }
+    50% {transform:rotateX(45deg) rotateY(45deg) rotateZ(405deg) translateZ(0px); width: 500px; height: 500px;}
+    100% {transform:rotateX(45deg) rotateY(45deg) rotateZ(765deg) translateZ(-60px); }
+}
+</style>
+</head>
+<body>
+
+<div id="div1">
+  <div id="div2"></div>
+  <div id="div3"></div>
+  <div id="div4"></div>
+</div>
+ 
+</body>
+</html>
